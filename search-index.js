@@ -1,0 +1,3 @@
+var searchIndex = {};
+searchIndex['criterion'] = {"items":[[0,"","criterion",""],[1,"Bencher","","Helper `struct` to build benchmark functions that follow the setup - bench - teardown pattern."],[11,"end","","",0],[11,"iterations","","",0],[11,"start","","",0],[1,"Criterion","","The \"criterion\" for the benchmark, which is also the benchmark \"builder\""],[11,"confidence_level","","",1],[11,"measurement_time","","",1],[11,"nresamples","","",1],[11,"sample_size","","",1],[11,"warm_up_time","","",1],[6,"Milisecond","",""],[10,"ms","","",2],[6,"Second","",""],[10,"s","","",3]],"paths":[[1,"Bencher"],[1,"Criterion"],[6,"Milisecond"],[6,"Second"]]};
+initSearch(searchIndex);

@@ -464,6 +464,78 @@
 <span id='424'>424</span>
 <span id='425'>425</span>
 <span id='426'>426</span>
+<span id='427'>427</span>
+<span id='428'>428</span>
+<span id='429'>429</span>
+<span id='430'>430</span>
+<span id='431'>431</span>
+<span id='432'>432</span>
+<span id='433'>433</span>
+<span id='434'>434</span>
+<span id='435'>435</span>
+<span id='436'>436</span>
+<span id='437'>437</span>
+<span id='438'>438</span>
+<span id='439'>439</span>
+<span id='440'>440</span>
+<span id='441'>441</span>
+<span id='442'>442</span>
+<span id='443'>443</span>
+<span id='444'>444</span>
+<span id='445'>445</span>
+<span id='446'>446</span>
+<span id='447'>447</span>
+<span id='448'>448</span>
+<span id='449'>449</span>
+<span id='450'>450</span>
+<span id='451'>451</span>
+<span id='452'>452</span>
+<span id='453'>453</span>
+<span id='454'>454</span>
+<span id='455'>455</span>
+<span id='456'>456</span>
+<span id='457'>457</span>
+<span id='458'>458</span>
+<span id='459'>459</span>
+<span id='460'>460</span>
+<span id='461'>461</span>
+<span id='462'>462</span>
+<span id='463'>463</span>
+<span id='464'>464</span>
+<span id='465'>465</span>
+<span id='466'>466</span>
+<span id='467'>467</span>
+<span id='468'>468</span>
+<span id='469'>469</span>
+<span id='470'>470</span>
+<span id='471'>471</span>
+<span id='472'>472</span>
+<span id='473'>473</span>
+<span id='474'>474</span>
+<span id='475'>475</span>
+<span id='476'>476</span>
+<span id='477'>477</span>
+<span id='478'>478</span>
+<span id='479'>479</span>
+<span id='480'>480</span>
+<span id='481'>481</span>
+<span id='482'>482</span>
+<span id='483'>483</span>
+<span id='484'>484</span>
+<span id='485'>485</span>
+<span id='486'>486</span>
+<span id='487'>487</span>
+<span id='488'>488</span>
+<span id='489'>489</span>
+<span id='490'>490</span>
+<span id='491'>491</span>
+<span id='492'>492</span>
+<span id='493'>493</span>
+<span id='494'>494</span>
+<span id='495'>495</span>
+<span id='496'>496</span>
+<span id='497'>497</span>
+<span id='498'>498</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cmp</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>::<span class='ident'>Show</span>;
@@ -474,11 +546,11 @@
 <span class='kw'>use</span> <span class='ident'>fs</span>;
 <span class='kw'>use</span> <span class='ident'>outliers</span>::<span class='ident'>Outliers</span>;
 <span class='kw'>use</span> <span class='ident'>plot</span>;
-<span class='kw'>use</span> <span class='ident'>statistics</span>::{<span class='ident'>Estimates</span>,<span class='ident'>Mean</span>,<span class='ident'>Median</span>,<span class='ident'>MedianAbsDev</span>,<span class='ident'>Sample</span>,<span class='ident'>StdDev</span>};
+<span class='kw'>use</span> <span class='ident'>statistics</span>::{<span class='ident'>Estimate</span>,<span class='ident'>Estimates</span>,<span class='ident'>Mean</span>,<span class='ident'>Median</span>,<span class='ident'>MedianAbsDev</span>,<span class='ident'>Sample</span>,<span class='ident'>StdDev</span>};
 <span class='kw'>use</span> <span class='ident'>stream</span>::<span class='ident'>Stream</span>;
 <span class='kw'>use</span> <span class='ident'>target</span>::{<span class='ident'>Function</span>,<span class='ident'>Program</span>,<span class='ident'>Target</span>};
 <span class='kw'>use</span> <span class='ident'>time</span>::<span class='ident'>Time</span>;
-<span class='kw'>use</span> <span class='ident'>time</span>::<span class='ident'>prefix</span>::{<span class='ident'>Mili</span>,<span class='ident'>Nano</span>,<span class='ident'>No</span>};
+<span class='kw'>use</span> <span class='ident'>time</span>::<span class='ident'>prefix</span>::{<span class='ident'>Mili</span>,<span class='ident'>Nano</span>};
 <span class='kw'>use</span> <span class='ident'>time</span>::<span class='ident'>traits</span>::{<span class='ident'>Milisecond</span>,<span class='ident'>Nanosecond</span>,<span class='ident'>Prefix</span>,<span class='ident'>Second</span>};
 <span class='kw'>use</span> <span class='ident'>time</span>::<span class='ident'>types</span>::<span class='ident'>Ns</span>;
 <span class='kw'>use</span> <span class='ident'>time</span>::<span class='ident'>unit</span>;
@@ -491,6 +563,7 @@
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Criterion</span> {
     <span class='ident'>confidence_level</span>: <span class='ident'>f64</span>,
     <span class='ident'>measurement_time</span>: <span class='ident'>Ns</span><span class='op'>&lt;</span><span class='ident'>u64</span><span class='op'>&gt;</span>,
+    <span class='ident'>noise_tolerance</span>: <span class='ident'>f64</span>,
     <span class='ident'>nresamples</span>: <span class='ident'>uint</span>,
     <span class='ident'>sample_size</span>: <span class='ident'>uint</span>,
     <span class='ident'>warm_up_time</span>: <span class='ident'>Ns</span><span class='op'>&lt;</span><span class='ident'>u64</span><span class='op'>&gt;</span>,
@@ -503,6 +576,8 @@
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// * Measurement time: 10 ms</span>
     <span class='doccomment'>///</span>
+    <span class='doccomment'>/// * Noise tolerance: 0.01 (1%)</span>
+    <span class='doccomment'>///</span>
     <span class='doccomment'>/// * Bootstrap with 100 000 resamples</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// * Sample size: 100 measurements</span>
@@ -513,6 +588,7 @@
         <span class='ident'>Criterion</span> {
             <span class='ident'>confidence_level</span>: <span class='number'>0.95</span>,
             <span class='ident'>measurement_time</span>: <span class='number'>10</span>.<span class='ident'>ms</span>().<span class='ident'>to</span>::<span class='op'>&lt;</span><span class='ident'>Nano</span><span class='op'>&gt;</span>(),
+            <span class='ident'>noise_tolerance</span>: <span class='number'>0.01</span>,
             <span class='ident'>nresamples</span>: <span class='number'>100_000</span>,
             <span class='ident'>sample_size</span>: <span class='number'>100</span>,
             <span class='ident'>warm_up_time</span>: <span class='number'>1</span>.<span class='ident'>s</span>().<span class='ident'>to</span>::<span class='op'>&lt;</span><span class='ident'>Nano</span><span class='op'>&gt;</span>(),
@@ -521,6 +597,8 @@
 
     <span class='attribute'>#[<span class='ident'>experimental</span>]</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>confidence_level</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>cl</span>: <span class='ident'>f64</span>) <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='ident'>Criterion</span> {
+        <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>cl</span> <span class='op'>&gt;</span> <span class='number'>0.0</span> <span class='op'>&amp;&amp;</span> <span class='ident'>cl</span> <span class='op'>&lt;</span> <span class='number'>1.0</span>);
+
         <span class='self'>self</span>.<span class='ident'>confidence_level</span> <span class='op'>=</span> <span class='ident'>cl</span>;
         <span class='self'>self</span>
     }
@@ -533,6 +611,14 @@
                             <span class='ident'>t</span>: <span class='ident'>Time</span><span class='op'>&lt;</span><span class='ident'>P</span>, <span class='ident'>unit</span>::<span class='ident'>Second</span>, <span class='ident'>u64</span><span class='op'>&gt;</span>)
                             <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='ident'>Criterion</span> {
         <span class='self'>self</span>.<span class='ident'>measurement_time</span> <span class='op'>=</span> <span class='ident'>t</span>.<span class='ident'>to</span>::<span class='op'>&lt;</span><span class='ident'>Nano</span><span class='op'>&gt;</span>();
+        <span class='self'>self</span>
+    }
+
+    <span class='attribute'>#[<span class='ident'>experimental</span>]</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>noise_tolerance</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>nt</span>: <span class='ident'>f64</span>) <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='ident'>Criterion</span> {
+        <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>nt</span> <span class='op'>&gt;=</span> <span class='number'>0.0</span>);
+
+        <span class='self'>self</span>.<span class='ident'>noise_tolerance</span> <span class='op'>=</span> <span class='ident'>nt</span>;
         <span class='self'>self</span>
     }
 
@@ -614,6 +700,10 @@
             <span class='self'>self</span>.<span class='ident'>bench</span>(<span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{}/{}&quot;</span>, <span class='ident'>id</span>, <span class='ident'>input</span>), <span class='op'>|</span><span class='ident'>b</span><span class='op'>|</span> <span class='ident'>fun</span>(<span class='ident'>b</span>, <span class='ident'>input</span>));
         }
 
+        <span class='macro'>print</span><span class='macro'>!</span>(<span class='string'>&quot;Summarizing results of {}... &quot;</span>, <span class='ident'>id</span>);
+        <span class='ident'>plot</span>::<span class='ident'>summarize</span>(<span class='kw-2'>&amp;</span><span class='ident'>Path</span>::<span class='ident'>new</span>(<span class='string'>&quot;.criterion&quot;</span>).<span class='ident'>join</span>(<span class='ident'>id</span>));
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;DONE\n&quot;</span>);
+
         <span class='self'>self</span>
     }
 
@@ -648,20 +738,9 @@
     <span class='doccomment'>///         }</span>
     <span class='doccomment'>///     }</span>
     <span class='doccomment'>///</span>
-    <span class='doccomment'>/// If `inputs` is empty, only `prog` will be benchmarked, otherwise `prog` will be</span>
-    <span class='doccomment'>/// benchmarked under each input</span>
+    <span class='doccomment'>/// For example, to benchmark a python script use the following command</span>
     <span class='doccomment'>///</span>
-    <span class='doccomment'>/// For example, to benchmark a python script under different inputs, use these arguments:</span>
-    <span class='doccomment'>///</span>
-    <span class='doccomment'>///     let cmd = Command::new(&quot;python3&quot;).args([&quot;-O&quot;, &quot;-u&quot;, &quot;fib.py&quot;]);</span>
-    <span class='doccomment'>///     let inputs = [5u, 10, 15];</span>
-    <span class='doccomment'>///</span>
-    <span class='doccomment'>/// This is equivalent to calling `bench_prog` on each of the following commands (with</span>
-    <span class='doccomment'>/// `inputs` left empty):</span>
-    <span class='doccomment'>///</span>
-    <span class='doccomment'>///     let cmd1 = Command::new(&quot;python3&quot;).args([&quot;-O&quot;, &quot;-u&quot;, &quot;fib.py&quot;, &quot;5&quot;]);</span>
-    <span class='doccomment'>///     let cmd2 = Command::new(&quot;python3&quot;).args([&quot;-O&quot;, &quot;-u&quot;, &quot;fib.py&quot;, &quot;10&quot;]);</span>
-    <span class='doccomment'>///     let cmd2 = Command::new(&quot;python3&quot;).args([&quot;-O&quot;, &quot;-u&quot;, &quot;fib.py&quot;, &quot;15&quot;]);</span>
+    <span class='doccomment'>///     let cmd = Command::new(&quot;python3&quot;).args([&quot;-O&quot;, &quot;clock.py&quot;]);</span>
     <span class='attribute'>#[<span class='ident'>experimental</span>]</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>bench_prog</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>,
                       <span class='ident'>S</span>: <span class='ident'>Str</span><span class='op'>&gt;</span>(
@@ -678,6 +757,18 @@
         <span class='self'>self</span>
     }
 
+    <span class='doccomment'>/// Benchmark an external program under various inputs</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// For example, to benchmark a python script under various inputs, use this combination:</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>///     let cmd = Command::new(&quot;python3&quot;).args([&quot;-O&quot;, &quot;fib.py&quot;]);</span>
+    <span class='doccomment'>///     let inputs = [5u, 10, 15];</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// This is equivalent to calling `bench_prog` on each of the following commands:</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>///     let cmd1 = Command::new(&quot;python3&quot;).args([&quot;-O&quot;, &quot;fib.py&quot;, &quot;5&quot;]);</span>
+    <span class='doccomment'>///     let cmd2 = Command::new(&quot;python3&quot;).args([&quot;-O&quot;, &quot;fib.py&quot;, &quot;10&quot;]);</span>
+    <span class='doccomment'>///     let cmd2 = Command::new(&quot;python3&quot;).args([&quot;-O&quot;, &quot;fib.py&quot;, &quot;15&quot;]);</span>
     <span class='attribute'>#[<span class='ident'>experimental</span>]</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>bench_prog_family</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>,
                              <span class='ident'>I</span>: <span class='ident'>Show</span>,
@@ -692,6 +783,27 @@
         <span class='kw'>for</span> <span class='ident'>input</span> <span class='kw'>in</span> <span class='ident'>inputs</span>.<span class='ident'>iter</span>() {
             <span class='self'>self</span>.<span class='ident'>bench_prog</span>(<span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{}/{}&quot;</span>, <span class='ident'>id</span>, <span class='ident'>input</span>), <span class='ident'>prog</span>.<span class='ident'>clone</span>().<span class='ident'>arg</span>(<span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='ident'>input</span>)));
         }
+
+        <span class='macro'>print</span><span class='macro'>!</span>(<span class='string'>&quot;Summarizing results of {}... &quot;</span>, <span class='ident'>id</span>);
+        <span class='ident'>plot</span>::<span class='ident'>summarize</span>(<span class='kw-2'>&amp;</span><span class='ident'>Path</span>::<span class='ident'>new</span>(<span class='string'>&quot;.criterion&quot;</span>).<span class='ident'>join</span>(<span class='ident'>id</span>));
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;DONE\n&quot;</span>);
+
+        <span class='self'>self</span>
+    }
+
+    <span class='doccomment'>/// Summarize the results stored under the `.criterion/${id}` folder</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// Note that `bench_family` and `bench_prog_family` internally call the `summarize` method</span>
+    <span class='attribute'>#[<span class='ident'>experimental</span>]</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>summarize</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>,
+                     <span class='ident'>S</span>: <span class='ident'>Str</span><span class='op'>&gt;</span>(
+                     <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='self'>self</span>,
+                     <span class='ident'>id</span>: <span class='ident'>S</span>)
+                     <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='ident'>Criterion</span> {
+        <span class='kw'>let</span> <span class='ident'>id</span> <span class='op'>=</span> <span class='ident'>id</span>.<span class='ident'>as_slice</span>();
+        <span class='macro'>print</span><span class='macro'>!</span>(<span class='string'>&quot;Summarizing results of {}... &quot;</span>, <span class='ident'>id</span>);
+        <span class='ident'>plot</span>::<span class='ident'>summarize</span>(<span class='kw-2'>&amp;</span><span class='ident'>Path</span>::<span class='ident'>new</span>(<span class='string'>&quot;.criterion&quot;</span>).<span class='ident'>join</span>(<span class='ident'>id</span>));
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;DONE\n&quot;</span>);
 
         <span class='self'>self</span>
     }
@@ -754,6 +866,32 @@
     <span class='ident'>plot</span>::<span class='ident'>ratio_distributions</span>(<span class='kw-2'>&amp;</span><span class='ident'>distributions</span>,
                               <span class='kw-2'>&amp;</span><span class='ident'>estimates</span>,
                               <span class='kw-2'>&amp;</span><span class='ident'>change_dir</span>.<span class='ident'>join</span>(<span class='string'>&quot;bootstrap/distribution&quot;</span>));
+
+    <span class='kw'>let</span> <span class='ident'>noise</span> <span class='op'>=</span> <span class='ident'>criterion</span>.<span class='ident'>noise_tolerance</span>;
+    <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>regressed</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>();
+    <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='ident'>statistic</span> <span class='kw'>in</span> [<span class='ident'>Mean</span>, <span class='ident'>Median</span>].<span class='ident'>iter</span>() {
+        <span class='kw'>let</span> <span class='ident'>estimate</span> <span class='op'>=</span> <span class='ident'>estimates</span>.<span class='ident'>get</span>(<span class='ident'>statistic</span>);
+        <span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>compare_to_noise</span>(<span class='ident'>estimate</span>, <span class='ident'>noise</span>);
+
+        <span class='kw'>let</span> <span class='ident'>p</span> <span class='op'>=</span> <span class='ident'>estimate</span>.<span class='ident'>point_estimate</span>();
+        <span class='kw'>match</span> <span class='ident'>result</span> {
+            <span class='ident'>Improved</span> <span class='op'>=&gt;</span> {
+                <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;  &gt; {} has improved by {:.2}%&quot;</span>, <span class='ident'>statistic</span>, <span class='op'>-</span><span class='number'>100.0</span> <span class='op'>*</span> <span class='ident'>p</span>);
+                <span class='ident'>regressed</span>.<span class='ident'>push</span>(<span class='boolval'>false</span>);
+            },
+            <span class='ident'>Regressed</span> <span class='op'>=&gt;</span> {
+                <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;  &gt; {} has regressed by {:.2}%&quot;</span>, <span class='ident'>statistic</span>, <span class='number'>100.0</span> <span class='op'>*</span> <span class='ident'>p</span>);
+                <span class='ident'>regressed</span>.<span class='ident'>push</span>(<span class='boolval'>true</span>);
+            },
+            <span class='ident'>WithinNoise</span> <span class='op'>=&gt;</span> {
+                <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;  &gt; {} is within noise levels&quot;</span>, <span class='ident'>statistic</span>);
+                <span class='ident'>regressed</span>.<span class='ident'>push</span>(<span class='boolval'>false</span>);
+            },
+        }
+    }
+    <span class='kw'>if</span> <span class='ident'>regressed</span>.<span class='ident'>iter</span>().<span class='ident'>all</span>(<span class='op'>|</span><span class='kw-2'>&amp;</span><span class='ident'>x</span><span class='op'>|</span> <span class='ident'>x</span>) {
+        <span class='macro'>fail</span><span class='macro'>!</span>(<span class='string'>&quot;regression&quot;</span>);
+    }
 }
 
 <span class='kw'>fn</span> <span class='ident'>extrapolate_iters</span>(<span class='ident'>iters</span>: <span class='ident'>u64</span>, <span class='ident'>took</span>: <span class='ident'>Ns</span><span class='op'>&lt;</span><span class='ident'>u64</span><span class='op'>&gt;</span>, <span class='ident'>want</span>: <span class='ident'>Ns</span><span class='op'>&lt;</span><span class='ident'>u64</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> (<span class='ident'>Ns</span><span class='op'>&lt;</span><span class='ident'>f64</span><span class='op'>&gt;</span>, <span class='ident'>u64</span>) {
@@ -838,13 +976,6 @@
         <span class='kw'>let</span> <span class='ident'>se</span> <span class='op'>=</span> <span class='ident'>format_time</span>(<span class='ident'>estimate</span>.<span class='ident'>standard_error</span>());
         <span class='kw'>let</span> <span class='ident'>cl</span> <span class='op'>=</span> <span class='ident'>ci</span>.<span class='ident'>confidence_level</span>();
 
-        <span class='kw'>let</span> <span class='ident'>statistic</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='ident'>statistic</span> {
-            <span class='ident'>Mean</span> <span class='op'>=&gt;</span> <span class='string'>&quot;mean&quot;</span>,
-            <span class='ident'>Median</span> <span class='op'>=&gt;</span> <span class='string'>&quot;median&quot;</span>,
-            <span class='ident'>MedianAbsDev</span> <span class='op'>=&gt;</span> <span class='string'>&quot;MAD&quot;</span>,
-            <span class='ident'>StdDev</span> <span class='op'>=&gt;</span> <span class='string'>&quot;SD&quot;</span>,
-        };
-
         <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;  &gt; {:&lt;7} {} ± {} [{} {}] {}% CI&quot;</span>, <span class='ident'>statistic</span>, <span class='ident'>p</span>, <span class='ident'>se</span>, <span class='ident'>lb</span>, <span class='ident'>ub</span>, <span class='ident'>cl</span> <span class='op'>*</span> <span class='number'>100.0</span>);
     }
 }
@@ -873,13 +1004,6 @@
         <span class='kw'>let</span> <span class='ident'>se</span> <span class='op'>=</span> <span class='ident'>format_change</span>(<span class='ident'>estimate</span>.<span class='ident'>standard_error</span>(), <span class='boolval'>false</span>);
         <span class='kw'>let</span> <span class='ident'>cl</span> <span class='op'>=</span> <span class='ident'>ci</span>.<span class='ident'>confidence_level</span>();
 
-        <span class='kw'>let</span> <span class='ident'>statistic</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='ident'>statistic</span> {
-            <span class='ident'>Mean</span> <span class='op'>=&gt;</span> <span class='string'>&quot;mean&quot;</span>,
-            <span class='ident'>Median</span> <span class='op'>=&gt;</span> <span class='string'>&quot;median&quot;</span>,
-            <span class='ident'>MedianAbsDev</span> <span class='op'>=&gt;</span> <span class='string'>&quot;MAD&quot;</span>,
-            <span class='ident'>StdDev</span> <span class='op'>=&gt;</span> <span class='string'>&quot;SD&quot;</span>,
-        };
-
         <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;  &gt; {:&lt;7} {} ± {} [{} {}] {}% CI&quot;</span>, <span class='ident'>statistic</span>, <span class='ident'>p</span>, <span class='ident'>se</span>, <span class='ident'>lb</span>, <span class='ident'>ub</span>, <span class='ident'>cl</span> <span class='op'>*</span> <span class='number'>100.0</span>);
     }
 }
@@ -889,6 +1013,26 @@
         <span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{:&gt;+6}%&quot;</span>, <span class='ident'>format_signed_short</span>(<span class='ident'>pct</span> <span class='op'>*</span> <span class='number'>1e2</span>))
     } <span class='kw'>else</span> {
         <span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{:&gt;6}%&quot;</span>, <span class='ident'>format_short</span>(<span class='ident'>pct</span> <span class='op'>*</span> <span class='number'>1e2</span>))
+    }
+}
+
+<span class='kw'>enum</span> <span class='ident'>ComparisonResult</span> {
+    <span class='ident'>Improved</span>,
+    <span class='ident'>Regressed</span>,
+    <span class='ident'>WithinNoise</span>,
+}
+
+<span class='kw'>fn</span> <span class='ident'>compare_to_noise</span>(<span class='ident'>estimate</span>: <span class='kw-2'>&amp;</span><span class='ident'>Estimate</span>, <span class='ident'>noise</span>: <span class='ident'>f64</span>) <span class='op'>-&gt;</span> <span class='ident'>ComparisonResult</span> {
+    <span class='kw'>let</span> <span class='ident'>ci</span> <span class='op'>=</span> <span class='ident'>estimate</span>.<span class='ident'>confidence_interval</span>();
+    <span class='kw'>let</span> <span class='ident'>lb</span> <span class='op'>=</span> <span class='ident'>ci</span>.<span class='ident'>lower_bound</span>();
+    <span class='kw'>let</span> <span class='ident'>ub</span> <span class='op'>=</span> <span class='ident'>ci</span>.<span class='ident'>upper_bound</span>();
+
+    <span class='kw'>if</span> <span class='ident'>lb</span> <span class='op'>&lt;</span> <span class='op'>-</span><span class='ident'>noise</span> <span class='op'>&amp;&amp;</span> <span class='ident'>ub</span> <span class='op'>&lt;</span> <span class='op'>-</span><span class='ident'>noise</span> {
+        <span class='ident'>Improved</span>
+    } <span class='kw'>else</span> <span class='kw'>if</span> <span class='ident'>lb</span> <span class='op'>&gt;</span> <span class='ident'>noise</span> <span class='op'>&amp;&amp;</span> <span class='ident'>ub</span> <span class='op'>&gt;</span> <span class='ident'>noise</span> {
+        <span class='ident'>Regressed</span>
+    } <span class='kw'>else</span> {
+        <span class='ident'>WithinNoise</span>
     }
 }
 </pre>
